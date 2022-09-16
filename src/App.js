@@ -1,8 +1,14 @@
 import React from "react";
-import logo from "./logo.png";
+import { Grid } from "@mui/material/";
 import { Clock } from "./components/Clock";
 import "./App.css";
 
+const timezones = [
+  "Asia/Singapore",
+  "Asia/Tokyo",
+  "America/New_York",
+  "Europe/London",
+];
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -25,11 +31,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Clock timeZone="Asia/Singapore" date={this.state.date} />
-          <Clock timeZone="Asia/Tokyo" date={this.state.date} />
-          <Clock timeZone="America/New_York" date={this.state.date} />
-          <Clock timeZone="Europe/London" date={this.state.date} />
+          <Grid container justifyContent="center" spacing={3}>
+            {timezones.map((timezone) => (
+              <Grid key={timezone} item>
+                <Clock timeZone={timezone} date={this.state.date} />
+              </Grid>
+            ))}
+          </Grid>
         </header>
       </div>
     );
