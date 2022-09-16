@@ -1,7 +1,21 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import Clock from "react-clock";
+import "react-clock/dist/Clock.css";
+import "./Clock.css";
+
 import React from "react";
 
-export class Clock extends React.Component {
+function changeTimezone(date, timezone) {
+  let invdate = new Date(
+    date.toLocaleString("en-US", {
+      timeZone: timezone,
+    })
+  );
+  let diff = date.getTime() - invdate.getTime();
+  return new Date(date.getTime() - diff); // needs to substract
+}
+
+export class ClockCard extends React.Component {
   render() {
     return (
       <Card
@@ -9,6 +23,14 @@ export class Clock extends React.Component {
           backgroundColor: "#fff",
         }}
       >
+        <CardMedia>
+          <Clock
+            hourHandWidth={5}
+            minuteHandWidth={4}
+            secondHandWidth={1}
+            value={changeTimezone(this.props.date, this.props.timeZone)}
+          />
+        </CardMedia>
         <CardContent>
           <Typography paragraph variant="body2" color="text.secondary">
             {this.props.timeZone}

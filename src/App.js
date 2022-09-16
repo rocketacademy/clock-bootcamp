@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material/";
-import { Clock } from "./components/Clock";
+import { ClockCard } from "./components/Clock";
 import "./App.css";
 
 const timezones = [
@@ -34,7 +34,7 @@ class App extends React.Component {
           <Grid container justifyContent="center" spacing={3}>
             {timezones.map((timezone) => (
               <Grid key={timezone} item>
-                <Clock timeZone={timezone} date={this.state.date} />
+                <ClockCard timeZone={timezone} date={this.state.date} />
               </Grid>
             ))}
           </Grid>
