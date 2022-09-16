@@ -1,6 +1,7 @@
 import React from "react"
+import "./Clock.css";
 
-export default function Clock() {
+export default function Clock(props) {
     const [date, refreshDate] = React.useState(new Date());
 
     function refreshClock() {
@@ -15,7 +16,21 @@ export default function Clock() {
       }, []);
 
     return (
-        <p>{date.toLocaleTimeString()}</p>
-    )
+        <table>
+          <thead>
+            <tr>  
+              <th>Country</th>
+              <th>Clock</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{(props.timezone).split("/")[1]}</td>
+              <td>{date.toLocaleString('en-GB', { timeZone: props.timeZone })}</td>
+            </tr>
+          </tbody>
+        </table>
+
+   )
 }
 
