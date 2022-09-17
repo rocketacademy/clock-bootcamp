@@ -5,33 +5,25 @@ import { Container, Row, Col } from "react-bootstrap";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function MyLayout() {
+function RowInLayout({ city, localTime }) {
+  return (
+    <Row className="justify-content-md-center">
+      <Col xs lg="2" align="left">
+        {city}
+      </Col>
+      <Col md="auto">
+        <Clock locales="en-GB" timeZone={localTime} />
+      </Col>
+    </Row>
+  );
+}
+
+function TabularBootstrap() {
   return (
     <Container fluid>
-      <Row className="justify-content-md-center">
-        <Col xs lg="2" align="left">
-          Los Angeles:
-        </Col>
-        <Col md="auto">
-          <Clock timeZone="America/Los_Angeles" />
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Col xs lg="2" align="left">
-          London:
-        </Col>
-        <Col md="auto">
-          <Clock timeZone="Europe/London" />
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Col xs lg="2" align="left">
-          Singapore:
-        </Col>
-        <Col md="auto">
-          <Clock timeZone="Asia/Singapore" />
-        </Col>
-      </Row>
+      <RowInLayout city="Los Angeles:" localTime="America/Los_Angeles" />
+      <RowInLayout city="London:" localTime="Europe/London" />
+      <RowInLayout city="Singapore:" localTime="Asia/Singapore" />
     </Container>
   );
 }
@@ -42,7 +34,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" /> <br />
-          <MyLayout />
+          <TabularBootstrap />
         </header>
       </div>
     );
