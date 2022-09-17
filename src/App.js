@@ -1,11 +1,8 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
-import Clock from "./Clock.js";
-import WorldClock from "./WorldClock.js";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { WorldClock } from "./WorldClock.js";
+
 import { timezones } from "./constants";
 
 class App extends React.Component {
@@ -13,14 +10,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Container>
-            <Row>
-              <Col>
-                <img src={logo} className="App-logo" alt="logo" />
-              </Col>
-            </Row>
-            <WorldClock clockData={timezones} />
-          </Container>
+          <img src={logo} className="App-logo" alt="logo" />
+          <WorldClock clockData={timezones} />
         </header>
       </div>
     );

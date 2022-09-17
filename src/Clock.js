@@ -2,7 +2,7 @@ import React from "react";
 
 import "./App.css";
 
-class Clock extends React.Component {
+export class Clock extends React.Component {
   constructor(props) {
     super(props);
     this.state = { date: new Date() };
@@ -30,20 +30,8 @@ class Clock extends React.Component {
         })}
       </p>
     );
-
-    // return (
-    //   <p>
-    //     It is{" "}
-    //     {this.state.date.toLocaleTimeString("en-US", {
-    //       timeZone: this.props.timeZone,
-    //     })}{" "}
-    //     in {this.props.timeZone}.
-    //   </p>
-    // );
   }
 }
-
-export default Clock;
 
 // const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
 
