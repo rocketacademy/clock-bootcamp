@@ -13,8 +13,8 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <br />
-          <Container>
-            <Row>
+          <Container className="light border">
+            <Row className="light border">
               <Col>Country</Col>
               <Col>City</Col>
               <Col>Clock</Col>
