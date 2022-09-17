@@ -10,7 +10,7 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "WATCHPACK_POLLING=true react-scripts start",
+    "start": "cross-env WATCHPACK_POLLING=true react-scripts start",
     "build": "react-scripts build"
   },
   "eslintConfig": {
@@ -29,5 +29,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

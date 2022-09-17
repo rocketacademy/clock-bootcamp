@@ -9,7 +9,6 @@ import Col from "react-bootstrap/Col";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date() };
   }
 
   render() {
@@ -25,16 +24,39 @@ class App extends React.Component {
 
             <Row>
               <Col>
-                <p>Hello</p>
+                <p>City</p>
+              </Col>
+              <Col>
+                <p>Timezone</p>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p>America/Los_Angeles</p>
               </Col>
               <Col>
                 <Clock timeZone="America/Los_Angeles" />
               </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p>Europe/London</p>
+              </Col>
               <Col>
                 <Clock timeZone="Europe/London" />
               </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p>Asia/Singapore</p>
+              </Col>
               <Col>
                 <Clock timeZone="Asia/Singapore" />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p>Asia/Qatar</p>
               </Col>
               <Col>
                 <Clock timeZone="Asia/Qatar" />
