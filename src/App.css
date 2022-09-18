@@ -17,3 +17,19 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+table {
+  border: 3px solid white;
+  width: 800px;
+  align-items: center;
+  justify-content: center;
+}
+
+th {
+  border-bottom: 1px solid white;
+}
+
+td {
+  width: 50%;
+  text-align: center;
+}
