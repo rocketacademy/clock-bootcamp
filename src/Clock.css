@@ -1,4 +1,7 @@
 table {
-    border: 1px solid wheat;
-    width: 30%;
+  font-size: x-large;
+}
+
+td {
+  width: 280px;
 }
