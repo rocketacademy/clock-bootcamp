@@ -5,17 +5,7 @@ import Clock from "./Clock.js"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-class TimeRow extends React.Component {
-  render() {
-    return (
-      <Row>
-        <Col>{this.props.countryName}</Col>
-        <Col><Clock langCode='en-GB' timeZone={this.props.timeZone}/></Col>
-      </Row>
-    )
-  }
-}
+import {WorldClock, clockData} from './worldclock.js'
 
 class App extends React.Component {
   render() {
@@ -28,15 +18,11 @@ class App extends React.Component {
               <Col>City</Col>
               <Col>Time</Col>
             </Row>
-            <TimeRow countryName="Dubai" timeZone="Asia/Dubai"/>
-            <TimeRow countryName='Singapore' timeZone="Asia/Singapore" />
-            <TimeRow countryName="Los Angeles" timeZone="America/Los_Angeles" />
-            <TimeRow countryName="London" timeZone="Europe/London" />
+            <WorldClock clockData={clockData}/>
           </Container>
         </header>
       </div>
     );
-
   }
 }
 

@@ -19,7 +19,7 @@ class Clock extends React.Component{
   }
 
   render() {
-    return <p>{this.state.date.toLocaleString(this.props.langCode ,{dateStyle:"medium", timeStyle: "medium", timeZone: this.props.timeZone})}</p>
+    return this.state.date.toLocaleString(this.props.langCode ,{dateStyle:"medium", timeStyle: "medium", timeZone: this.props.timeZone})
   }
 }
 
