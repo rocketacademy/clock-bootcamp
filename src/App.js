@@ -1,6 +1,11 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
+import Clock from "./Clock";
+
+const timezones = ["Asia/Singapore", "America/Los_Angeles", "Europe/London"];
+
+const allTimezones = timezones.map((timezone) => <Clock timezone={timezone} />);
 
 class App extends React.Component {
   render() {
@@ -8,9 +13,13 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <thead>
+            <tr>
+              <th>City</th>
+              <th>Clock</th>
+            </tr>
+          </thead>
+          {allTimezones}
         </header>
       </div>
     );
