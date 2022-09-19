@@ -14,23 +14,25 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <Container className="grid">
             <Row>
-              <Col>City</Col>
-              <Col>Clock</Col>
+              <p>City</p>
+              <Col>
+                <p>Singapore</p>
+              </Col>
+              <Col>
+                <p>London</p>
+              </Col>
+              <Col>
+                <p>Dubai</p>
+              </Col>
             </Row>
             <Row>
-              <Col>Singapore</Col>
+              Clock
               <Col>
                 <Clock timeZone="Asia/Singapore" />
               </Col>
-            </Row>
-            <Row>
-              <Col>London</Col>
               <Col>
                 <Clock timeZone="Europe/London" />
               </Col>
-            </Row>
-            <Row>
-              <Col>Dubai</Col>
               <Col>
                 <Clock timeZone="Asia/Dubai" />
               </Col>
