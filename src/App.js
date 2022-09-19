@@ -1,6 +1,7 @@
 import React from "react";
-import logo from "./logo.png";
 import "./App.css";
+import logo from "./logo.png";
+import Clock from "./clock.js"
 
 class App extends React.Component {
   render() {
@@ -8,9 +9,9 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <Clock timezone="Asia/Singapore" />
+          <Clock timezone="America/Chicago" />
+          <Clock timezone="Japan" />
         </header>
       </div>
     );
