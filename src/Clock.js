@@ -1,16 +1,18 @@
 import React from "react";
 
-class Clock extends React.Component{
+class Clock extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {date: new Date()};
+    this.state = { date: new Date() };
   }
 
   componentDidMount() {
     this.timerID = setInterval(
-      () => this.setState({
-      date: new Date()
-      }), 1000
+      () =>
+        this.setState({
+          date: new Date(),
+        }),
+      1000
     );
   }
 
@@ -19,7 +21,11 @@ class Clock extends React.Component{
   }
 
   render() {
-    return this.state.date.toLocaleString(this.props.langCode ,{dateStyle:"medium", timeStyle: "medium", timeZone: this.props.timeZone})
+    return this.state.date.toLocaleString(this.props.langCode, {
+      dateStyle: "medium",
+      timeStyle: "medium",
+      timeZone: this.props.timeZone,
+    });
   }
 }
 
