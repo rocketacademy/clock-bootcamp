@@ -1,10 +1,8 @@
 import React from "react";
 
-
 class Clock extends React.Component {
   constructor(props) {
     super(props);
-    // Initialise component state to contain "date" attribute with current date and time
     this.state = { date: new Date() };
   }
 
@@ -19,8 +17,10 @@ class Clock extends React.Component {
   }
 
   render(){
-    return (<p>{`${this.props.timezone}: ${this.state.date.toLocaleString("en-GB", {
-          timeZone: this.props.timezone,})}`}</p>);
+    return (
+    <p>
+      {this.props.timezone}: {this.state.date.toLocaleString("en-GB", this.props.timezone)}
+    </p>)
   }
 }
 
