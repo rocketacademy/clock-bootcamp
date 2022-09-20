@@ -17,15 +17,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.Area-clock {
-  display: flex;
-}
-
-.region,
-.timezone {
-  display: flex;
-  width: 50%;
-  justify-items: space-between;
-  align-items: center;
-}
