@@ -1,41 +1,32 @@
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-import Clock from "react-clock";
-import "react-clock/dist/Clock.css";
-import "./Clock.css";
-
 import React from "react";
-
-function changeTimezone(date, timezone) {
-  let invdate = new Date(
-    date.toLocaleString("en-US", {
-      timeZone: timezone,
-    })
-  );
-  let diff = date.getTime() - invdate.getTime();
-  return new Date(date.getTime() - diff); // needs to substract
-}
+import { AnalogueClock } from "./AnalogueClock";
 
 export class ClockCard extends React.Component {
   render() {
     return (
-      <Card
-        sx={{
-          backgroundColor: "#fff",
-        }}
-      >
+      <Card>
         <CardMedia>
-          <Clock
-            hourHandWidth={5}
-            minuteHandWidth={4}
-            secondHandWidth={1}
-            value={changeTimezone(this.props.date, this.props.timeZone)}
+          <AnalogueClock
+            date={this.props.date}
+            timeZone={this.props.timeZone}
           />
         </CardMedia>
         <CardContent>
-          <Typography paragraph variant="body2" color="text.secondary">
-            {this.props.timeZone}
+          <Typography
+            paragraph
+            variant="body1"
+            color="text.secondary"
+            sx={{ fontSize: "h5.fontSize" }}
+          >
+            {this.props.title}
           </Typography>
-          <Typography paragraph variant="body2" color="text.secondary">
+          <Typography
+            paragraph
+            variant="body2"
+            color="text.primary"
+            sx={{ fontSize: "h6.fontSize" }}
+          >
             {this.props.date.toLocaleString("en-GB", {
               timeZone: this.props.timeZone,
               weekday: "short",

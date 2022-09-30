@@ -1,45 +1,58 @@
 import React from "react";
-import { Grid } from "@mui/material/";
-import { ClockCard } from "./components/Clock";
+import { CardGrid } from "./components/CardGrid";
 import "./App.css";
+import SelectWithFlag from "./components/SelectWithFlag";
+import allCities from "./data/cities.json";
+import { Paper, Stack } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
-const timezones = [
-  "Asia/Singapore",
-  "Asia/Tokyo",
-  "America/New_York",
-  "Europe/London",
-];
+const Item = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
+
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date() };
-  }
-
-  componentDidMount() {
-    this.timer = setInterval(() => {
+    this.state = {
+      date: new Date(),
+      allCities: allCities.map((city, i) => {
+        return {
+          id: `city-${i}`,
+          label: `${city.city}, ${city.country}`,
+          code: city.code,
+          timeZone: city.timeZone,
+        };
+      }),
+      selectedCities: [], // detect and fill up current city based on IP address
+    };
+    this.addCity = (city) => {
       this.setState({
-        date: new Date(),
+        selectedCities: [...this.state.selectedCities, city],
       });
-    }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer);
+    };
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <Grid container justifyContent="center" spacing={3}>
-            {timezones.map((timezone) => (
-              <Grid key={timezone} item>
-                <ClockCard timeZone={timezone} date={this.state.date} />
-              </Grid>
-            ))}
-          </Grid>
-        </header>
-      </div>
+      <Stack
+        spacing={2}
+        sx={{ display: "flex", flexDirection: "column", height: "100vh" }}
+      >
+        <Item>
+          <SelectWithFlag // Only should re-render on change in selectedCities
+            data={this.state.allCities.filter(
+              (city) => !this.state.selectedCities.includes(city)
+            )}
+            label="Choose a city"
+            selectHandler={this.addCity}
+          />
+        </Item>
+        <Item sx={{ flexGrow: 1 }}>
+          <CardGrid data={this.state.selectedCities} />
+        </Item>
+      </Stack>
     );
   }
 }
