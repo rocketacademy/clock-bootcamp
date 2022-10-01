@@ -16,6 +16,8 @@ export function AnalogueClock(props) {
   const { date, timeZone, ...other } = props;
   return (
     <Clock
+      renderNumbers
+      size={200}
       hourHandWidth={5}
       minuteHandWidth={4}
       secondHandWidth={1}

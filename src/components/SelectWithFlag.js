@@ -20,21 +20,21 @@ export default function SelectWithFlag(props) {
   return (
     <Autocomplete
       sx={{ maxWidth: 600, margin: "auto" }}
-      noOptionsText="No cities"
-      value={value}
-      inputValue={inputValue}
+      noOptionsText="No cities" // display when no options available
+      autoHighlight={true} // always select first option
+      value={value} // actual value in react component
+      inputValue={inputValue} // string value in the input element
       onInputChange={(event, inputString, reason) => {
-        setinputValue(inputString);
+        setinputValue(inputString); // input change handler
       }}
       onChange={(event, value) => {
-        console.log(event, value);
         props.selectHandler(value);
         setValue(null);
         setinputValue("");
       }}
-      filterOptions={filterOptions}
-      options={inputValue.length ? props.data : []}
-      key={(option) => option.label}
+      filterOptions={filterOptions} // used to limit/configure filter
+      options={inputValue.length ? props.data : []} // change to most popular cities
+      key={(option) => option.label} // key of each option
       renderOption={(props, option) => (
         <Box
           component="li"
@@ -54,7 +54,7 @@ export default function SelectWithFlag(props) {
       renderInput={(params) => (
         <TextField
           {...params}
-          label={props.label}
+          label="type a city name (e.g. Singapore, Tokyo, London)"
           inputProps={{
             ...params.inputProps,
             autoComplete: "new-autocomplete", // disable autocomplete and autofill

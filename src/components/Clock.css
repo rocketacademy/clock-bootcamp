@@ -1,8 +1,6 @@
 .react-clock__second-hand {
-  transition: transform cubic-bezier(0.68, 0, 0.27, 1.55) 0.5s;
+  transition: transform cubic-bezier(0, 0.7, 0.3, 1) 0.5s;
 }
 .react-clock {
-  width: 120px !important;
-  height: 120px !important;
   margin: auto;
 }

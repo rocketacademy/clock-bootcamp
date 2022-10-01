@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material/";
-import { ClockCard } from "./Clock";
+import { ClockCard } from "./ClockCard";
 
 export class CardGrid extends React.Component {
   componentDidMount() {
@@ -30,6 +30,9 @@ export class CardGrid extends React.Component {
               title={item.label}
               timeZone={item.timeZone}
               date={this.state.date}
+              close={(ev) => {
+                this.props.removeCardHandler(item);
+              }}
             />
           </Grid>
         ))}

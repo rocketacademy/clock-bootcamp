@@ -1,4 +1,12 @@
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 import { AnalogueClock } from "./AnalogueClock";
 
@@ -6,6 +14,14 @@ export class ClockCard extends React.Component {
   render() {
     return (
       <Card>
+        <CardHeader
+          subheader={this.props.title}
+          action={
+            <IconButton aria-label="settings" onClick={this.props.close}>
+              <CloseIcon />
+            </IconButton>
+          }
+        />
         <CardMedia>
           <AnalogueClock
             date={this.props.date}
@@ -13,20 +29,7 @@ export class ClockCard extends React.Component {
           />
         </CardMedia>
         <CardContent>
-          <Typography
-            paragraph
-            variant="body1"
-            color="text.secondary"
-            sx={{ fontSize: "h5.fontSize" }}
-          >
-            {this.props.title}
-          </Typography>
-          <Typography
-            paragraph
-            variant="body2"
-            color="text.primary"
-            sx={{ fontSize: "h6.fontSize" }}
-          >
+          <Typography sx={{ fontSize: "h6.fontSize" }}>
             {this.props.date.toLocaleString("en-GB", {
               timeZone: this.props.timeZone,
               weekday: "short",
