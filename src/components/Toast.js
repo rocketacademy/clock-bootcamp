@@ -18,7 +18,7 @@ export function Toast({ toast, id }) {
   };
 
   const undoHandler = (event) => {
-    setOpen(false);
+    closeHandler(event, "undo");
     toast.undoHandler(event);
   };
 

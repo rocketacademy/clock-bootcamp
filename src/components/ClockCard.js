@@ -30,7 +30,7 @@ export class ClockCard extends React.Component {
         </CardMedia>
         <CardContent>
           <Typography sx={{ fontSize: "h6.fontSize" }}>
-            {this.props.date.toLocaleString("en-GB", {
+            {this.props.date.toLocaleString("en-AU", {
               timeZone: this.props.timeZone,
               weekday: "short",
               hour: "numeric",
