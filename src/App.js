@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CardGrid } from "./components/CardGrid";
-import "./App.css";
 import SelectWithFlag from "./components/SelectWithFlag";
 import _allCities from "./data/cities.json";
 import { Grid, IconButton, Paper, Stack, Typography } from "@mui/material";
@@ -18,6 +17,12 @@ const Item = styled(Paper)(({ theme }) => ({
   boxShadow: 0,
 }));
 
+const ToastObj = (message, attrs) => ({
+  id: uuidv4(),
+  message: message,
+  ...attrs,
+});
+
 const allCities = _allCities.map((city, i) => {
   return {
     id: `city-${i}`,
@@ -31,10 +36,6 @@ export default function App() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCities, setSelectedCities] = useState([]);
   const [toasts, setToasts] = useState([]);
-  // callback in addCity uses stale state for useState hooks,
-  // so we use useRef https://stackoverflow.com/a/60643670
-  const _selectedCities = useRef();
-  _selectedCities.current = selectedCities;
 
   useEffect(() => {
     const cityIds = new Set();
@@ -47,27 +48,23 @@ export default function App() {
     setSearchParams({ c: selectedCities.map((city) => city.id) });
   }, [selectedCities, setSearchParams]);
 
-  const addCity = (city) => {
-    setSelectedCities([..._selectedCities.current, city]);
-    setToasts([
-      ...toasts,
-      {
-        id: uuidv4(),
-        message: `Added ${city.label}`,
-      },
-    ]);
+  const addCity = (city, isRestore) => {
+    setSelectedCities(
+      isRestore ? selectedCities : [...selectedCities, city],
+      setToasts([...toasts, ToastObj(`Added ${city.label}`)])
+    );
   };
 
   const removeCity = (city) => {
-    setSelectedCities(selectedCities.filter((c) => c !== city));
-    setToasts([
-      ...toasts,
-      {
-        id: uuidv4(),
-        message: `Removed ${city.label}`,
-        undoHandler: (ev) => addCity(city),
-      },
-    ]);
+    setSelectedCities(
+      selectedCities.filter((c) => c.id !== city.id),
+      setToasts([
+        ...toasts,
+        ToastObj(`Removed ${city.label}`, {
+          undoHandler: (ev) => addCity(city, true),
+        }),
+      ])
+    );
   };
 
   return (
@@ -92,11 +89,7 @@ export default function App() {
                 navigator.clipboard.writeText(window.location.href);
                 setToasts([
                   ...toasts,
-                  {
-                    id: uuidv4(),
-                    message: `URL copied!`,
-                    duration: 1500,
-                  },
+                  ToastObj(`URL copied to clipboard!`, { duration: 1500 }),
                 ]);
               }}
             >
