@@ -1,8 +1,8 @@
 import React from "react";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import ReplayIcon from "@mui/icons-material/Replay";
 import { Slide } from "@mui/material";
 
 function Transition(props) {
@@ -13,33 +13,23 @@ export function Toast({ toast, id }) {
   const [open, setOpen] = React.useState(true);
 
   const closeHandler = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
+    if (reason === "clickaway") return;
     setOpen(false);
+  };
+
+  const undoHandler = (event) => {
+    setOpen(false);
+    toast.undoHandler(event);
   };
 
   const action = (
     <>
       {toast.undoHandler && (
-        <Button
-          color="secon"
-          size="small"
-          onClick={(ev) => {
-            setOpen(false);
-            toast.undoHandler(ev);
-          }}
-        >
-          UNDO
-        </Button>
+        <IconButton size="small" color="inherit" onClick={undoHandler}>
+          <ReplayIcon fontSize="small" />
+        </IconButton>
       )}
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={closeHandler}
-      >
+      <IconButton size="small" color="inherit" onClick={closeHandler}>
         <CloseIcon fontSize="small" />
       </IconButton>
     </>
@@ -49,7 +39,7 @@ export function Toast({ toast, id }) {
     <Snackbar
       sx={{ position: "relative" }}
       open={open}
-      autoHideDuration={5000}
+      autoHideDuration={toast.duration || 5000}
       onClose={closeHandler}
       message={toast.message}
       TransitionComponent={Transition}

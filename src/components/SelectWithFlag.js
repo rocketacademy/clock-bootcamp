@@ -19,7 +19,7 @@ export default function SelectWithFlag(props) {
   const [value, setValue] = React.useState(null);
   return (
     <Autocomplete
-      sx={{ maxWidth: 600, margin: "auto" }}
+      sx={{ maxWidth: 600, margin: "auto", flexGrow: 1 }}
       noOptionsText="No cities" // display when no options available
       autoHighlight={true} // always select first option
       value={value} // actual value in react component

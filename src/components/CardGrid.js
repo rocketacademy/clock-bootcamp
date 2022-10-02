@@ -3,6 +3,13 @@ import { Grid } from "@mui/material/";
 import { ClockCard } from "./ClockCard";
 
 export class CardGrid extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+    };
+  }
+
   componentDidMount() {
     this.timer = setInterval(() => {
       this.setState({
@@ -25,7 +32,7 @@ export class CardGrid extends React.Component {
         sx={{ height: "100%" }}
       >
         {this.props.data.map((item) => (
-          <Grid key={item} item>
+          <Grid key={item.id} item xs={12} sm={6} md={4}>
             <ClockCard
               title={item.label}
               timeZone={item.timeZone}
