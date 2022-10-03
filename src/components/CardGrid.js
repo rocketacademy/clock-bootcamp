@@ -49,6 +49,7 @@ export function CardGrid(props) {
       <Grid
         container
         justifyContent="center"
+        alignContent="flex-start"
         spacing={2}
         sx={{ height: "100%" }}
       >
