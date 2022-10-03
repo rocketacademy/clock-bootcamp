@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from "uuid";
 import ToastContainer from "./components/ToastContainer";
 import ShareIcon from "@mui/icons-material/Share";
 import { useSearchParams } from "react-router-dom";
-import zIndex from "@mui/material/styles/zIndex";
 
 const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),

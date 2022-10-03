@@ -58,6 +58,7 @@ export function CardGrid(props) {
         >
           {props.data.map((item) => (
             <SortableGridItem
+              key={item.id}
               item={item}
               date={date}
               removeCardHandler={props.removeCardHandler}
