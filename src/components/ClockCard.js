@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   CardContent,
   CardHeader,
@@ -9,6 +10,8 @@ import {
   Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import NightlightIcon from "@mui/icons-material/Nightlight";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import React, { useEffect, useState } from "react";
 import { AnalogueClock } from "./AnalogueClock";
 import { getDatetimeString, getIsDay } from "../utils/datetime";
@@ -31,8 +34,21 @@ export function ClockCard(props) {
     setIsDay(getIsDay(props.date, props.timeZone));
   }, [props.date, props.timeZone]);
 
+  const DayNightIcon = () => {
+    return (
+      <Box sx={{ position: "absolute", p: 2.5 }}>
+        {isDay ? (
+          <LightModeIcon />
+        ) : (
+          <NightlightIcon style={{ fill: "#fff" }} />
+        )}
+      </Box>
+    );
+  };
+
   return (
     <ThemeProvider theme={isDay ? lightTheme : darkTheme}>
+      <DayNightIcon />
       <Card sx={{ height: "100%", textAlign: "center" }} elevation={4}>
         <CardHeader
           sx={{ height: 0 }}
@@ -56,7 +72,7 @@ export function ClockCard(props) {
           <Typography sx={{ fontSize: "h5.fontSize" }}>
             {props.title}
           </Typography>
-          <Typography>{props.timeZone}</Typography>
+          <Typography>{props.timeZone.replaceAll("_", " ")}</Typography>
         </CardContent>
       </Card>
     </ThemeProvider>
