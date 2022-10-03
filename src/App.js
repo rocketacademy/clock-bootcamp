@@ -38,9 +38,16 @@ export default function App() {
   const [toasts, setToasts] = useState([]);
 
   useEffect(() => {
-    const cityIds = new Set();
-    searchParams.forEach((cityId, _) => cityIds.add(cityId));
-    setSelectedCities(allCities.filter((city) => cityIds.has(city.id)));
+    const cityIds = new Map(); // prevent duplicate cards, guarantee insert order
+    searchParams.forEach((cityId, _) => {
+      cityIds.set(cityId, true);
+    });
+    allCities.forEach((city) => {
+      if (cityIds.has(city.id)) {
+        cityIds.set(city.id, city);
+      }
+    });
+    setSelectedCities([...cityIds.values()]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // run only on first load https://stackoverflow.com/a/55854902
 
