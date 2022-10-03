@@ -20,7 +20,7 @@ export default function SelectWithFlag(props) {
   return (
     <Autocomplete
       sx={{ maxWidth: 600, margin: "auto", flexGrow: 1 }}
-      noOptionsText="No cities" // display when no options available
+      noOptionsText="No matching cities" // display when no options available
       autoHighlight={true} // always select first option
       value={value} // actual value in react component
       inputValue={inputValue} // string value in the input element
@@ -33,7 +33,7 @@ export default function SelectWithFlag(props) {
         setinputValue("");
       }}
       filterOptions={filterOptions} // used to limit/configure filter
-      options={inputValue.length ? props.data : []} // change to most popular cities
+      options={inputValue.length ? props.data : props.DEFAULT_DATA} // change to most popular cities
       key={(option) => option.label} // key of each option
       renderOption={(props, option) => (
         <Box
@@ -46,7 +46,7 @@ export default function SelectWithFlag(props) {
             width="20"
             src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
             srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
-            alt=""
+            alt={`${option.code}`}
           />
           {option.label} ({option.code})
         </Box>

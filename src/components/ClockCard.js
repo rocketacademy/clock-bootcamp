@@ -11,6 +11,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import React, { useEffect, useState } from "react";
 import { AnalogueClock } from "./AnalogueClock";
+import { getDatetimeString, getIsDay } from "../utils/datetime";
 
 const darkTheme = createTheme({
   palette: {
@@ -27,23 +28,12 @@ const lightTheme = createTheme({
 export function ClockCard(props) {
   const [isDay, setIsDay] = useState(true);
   useEffect(() => {
-    setIsDay(
-      (parseInt(
-        props.date.toLocaleString("en-AU", {
-          timeZone: props.timeZone,
-          hour: "numeric",
-          hour12: false,
-        })
-      ) +
-        5) %
-        24 >=
-        12
-    );
+    setIsDay(getIsDay(props.date, props.timeZone));
   }, [props.date, props.timeZone]);
 
   return (
     <ThemeProvider theme={isDay ? lightTheme : darkTheme}>
-      <Card>
+      <Card sx={{ height: "100%", textAlign: "center" }} elevation={4}>
         <CardHeader
           sx={{ height: 0 }}
           action={
@@ -61,14 +51,7 @@ export function ClockCard(props) {
         </CardMedia>
         <CardContent>
           <Typography sx={{ fontSize: "h6.fontSize" }}>
-            {props.date.toLocaleString("en-AU", {
-              timeZone: props.timeZone,
-              weekday: "short",
-              hour: "numeric",
-              minute: "numeric",
-              second: "numeric",
-              hour12: true,
-            })}
+            {getDatetimeString(props.date, props.timeZone)}
           </Typography>
           <Typography sx={{ fontSize: "h5.fontSize" }}>
             {props.title}

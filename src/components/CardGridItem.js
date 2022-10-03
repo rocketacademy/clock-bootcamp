@@ -2,16 +2,29 @@ import { CSS } from "@dnd-kit/utilities";
 import { ClockCard } from "./ClockCard";
 import { Grid } from "@mui/material";
 import { useSortable } from "@dnd-kit/sortable";
+import { useMemo } from "react";
 
 export const SortableGridItem = (props) => {
   const { item, date } = props;
-  const { setNodeRef, attributes, listeners, transition, transform } =
-    useSortable({ id: item.id });
-
-  const style = {
+  const {
+    setNodeRef,
+    attributes,
+    listeners,
     transition,
-    transform: CSS.Transform.toString(transform),
-  };
+    transform,
+    isDragging,
+  } = useSortable({ id: item.id });
+
+  const style = useMemo(
+    () => ({
+      transition,
+      transform: CSS.Transform.toString(transform),
+      zIndex: isDragging ? 5 : 0,
+      opacity: isDragging ? 0.3 : 1,
+    }),
+    [transition, transform, isDragging]
+  );
+
   return (
     <Grid
       key={item.id}

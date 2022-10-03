@@ -3,7 +3,7 @@ import { Grid } from "@mui/material/";
 import {
   closestCenter,
   DndContext,
-  PointerSensor,
+  DragOverlay,
   useSensor,
 } from "@dnd-kit/core";
 import {
@@ -12,9 +12,12 @@ import {
   SortableContext,
 } from "@dnd-kit/sortable";
 import { SortableGridItem } from "./CardGridItem";
+import CustomPointerSensor from "./CustomPointerSensor";
+import { createPortal } from "react-dom";
 
 export function CardGrid(props) {
   const [date, setDate] = useState(new Date());
+  const [activeItem, setActiveItem] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,28 +26,27 @@ export function CardGrid(props) {
     return () => clearInterval(interval);
   }, []);
 
-  const sensors = [
-    useSensor(PointerSensor, {
-      activationConstraint: { distance: 5 },
-    }),
-  ];
+  const sensors = [useSensor(CustomPointerSensor)];
 
   const onDragEndHandler = ({ active, over }) => {
+    setActiveItem(null);
     if (active && over && active.id !== over.id) {
       const oldIndex = props.data.findIndex((item) => item.id === active.id);
       const newIndex = props.data.findIndex((item) => item.id === over.id);
       return props.setData(arrayMove(props.data, oldIndex, newIndex));
     }
   };
+  const onDragStartHandler = (event) => {
+    const index = props.data.findIndex((item) => item.id === event.active.id);
+    setActiveItem(props.data[index]);
+  };
 
   return (
     <DndContext // dndkit tutorial: https://www.youtube.com/watch?v=eDc2xowd0RI
       sensors={sensors}
       collisionDetection={closestCenter}
-      onDragEnd={(ev) => {
-        console.log(ev);
-        onDragEndHandler(ev);
-      }}
+      onDragEnd={onDragEndHandler}
+      onDragStart={onDragStartHandler}
     >
       <Grid
         container
@@ -67,6 +69,18 @@ export function CardGrid(props) {
           ))}
         </SortableContext>
       </Grid>
+      {createPortal(
+        <DragOverlay>
+          {activeItem ? (
+            <SortableGridItem
+              key={activeItem.id}
+              item={activeItem}
+              date={date}
+            />
+          ) : null}
+        </DragOverlay>,
+        document.body
+      )}
     </DndContext>
   );
 }
