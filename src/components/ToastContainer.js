@@ -7,9 +7,9 @@ class ToastContainer extends React.Component {
     return (
       <Stack
         sx={{
-          position: "absolute",
-          bottom: 24,
-          left: 24,
+          position: "fixed",
+          bottom: 0,
+          left: 0,
         }}
         spacing={2}
       >

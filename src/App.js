@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import ToastContainer from "./components/ToastContainer";
 import ShareIcon from "@mui/icons-material/Share";
 import { useSearchParams } from "react-router-dom";
+import zIndex from "@mui/material/styles/zIndex";
 
 const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -70,14 +71,16 @@ export default function App() {
   return (
     <>
       <Stack sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-        <Item>
+        <Item
+          sx={{ position: "fixed", width: "100%", bgcolor: "#fff", zIndex: 1 }}
+        >
           <Grid
             container
             direction="row"
             justifyContent="space-between"
             alignItems="center"
           >
-            <Typography variant="h5" sx={{ paddingRight: "10px" }}>
+            <Typography variant="h5" sx={{ px: "10px" }}>
               World Clock
             </Typography>
             <SelectWithFlag
@@ -85,6 +88,7 @@ export default function App() {
               selectHandler={addCity}
             />
             <IconButton
+              sx={{ mx: "20px" }}
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
                 setToasts([
@@ -97,11 +101,12 @@ export default function App() {
             </IconButton>
           </Grid>
         </Item>
-        <Item sx={{ flexGrow: 1 }}>
+        <Item sx={{ flexGrow: 1, pt: 5, mt: 5 }}>
           <CardGrid
             data={selectedCities}
             addCardHandler={addCity}
             removeCardHandler={removeCity}
+            setData={setSelectedCities}
           />
         </Item>
       </Stack>

@@ -1,49 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material/";
-import { ClockCard } from "./ClockCard";
+import {
+  closestCenter,
+  DndContext,
+  PointerSensor,
+  useSensor,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  rectSortingStrategy,
+  SortableContext,
+} from "@dnd-kit/sortable";
+import { SortableGridItem } from "./CardGridItem";
 
-export class CardGrid extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: new Date(),
-    };
-  }
+export function CardGrid(props) {
+  const [date, setDate] = useState(new Date());
 
-  componentDidMount() {
-    this.timer = setInterval(() => {
-      this.setState({
-        date: new Date(),
-      });
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDate(new Date());
     }, 1000);
-  }
+    return () => clearInterval(interval);
+  }, []);
 
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
+  const sensors = [
+    useSensor(PointerSensor, {
+      activationConstraint: { distance: 5 },
+    }),
+  ];
 
-  render() {
-    return (
+  const onDragEndHandler = ({ active, over }) => {
+    if (active && over && active.id !== over.id) {
+      const oldIndex = props.data.findIndex((item) => item.id === active.id);
+      const newIndex = props.data.findIndex((item) => item.id === over.id);
+      return props.setData(arrayMove(props.data, oldIndex, newIndex));
+    }
+  };
+
+  return (
+    <DndContext // dndkit tutorial: https://www.youtube.com/watch?v=eDc2xowd0RI
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragEnd={(ev) => {
+        console.log(ev);
+        onDragEndHandler(ev);
+      }}
+    >
       <Grid
         container
         justifyContent="center"
-        alignItems="center"
-        spacing={3}
+        spacing={2}
         sx={{ height: "100%" }}
       >
-        {this.props.data.map((item) => (
-          <Grid key={item.id} item xs={12} sm={6} md={4}>
-            <ClockCard
-              title={item.label}
-              timeZone={item.timeZone}
-              date={this.state.date}
-              close={(ev) => {
-                this.props.removeCardHandler(item);
-              }}
+        <SortableContext
+          items={props.data.map((item) => item.id)}
+          strategy={rectSortingStrategy}
+        >
+          {props.data.map((item) => (
+            <SortableGridItem
+              item={item}
+              date={date}
+              removeCardHandler={props.removeCardHandler}
             />
-          </Grid>
-        ))}
+          ))}
+        </SortableContext>
       </Grid>
-    );
-  }
+    </DndContext>
+  );
 }

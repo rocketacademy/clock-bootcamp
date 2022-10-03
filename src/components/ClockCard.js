@@ -15,7 +15,7 @@ export class ClockCard extends React.Component {
     return (
       <Card>
         <CardHeader
-          subheader={this.props.title}
+          sx={{ height: 0 }}
           action={
             <IconButton aria-label="settings" onClick={this.props.close}>
               <CloseIcon />
@@ -39,6 +39,10 @@ export class ClockCard extends React.Component {
               hour12: true,
             })}
           </Typography>
+          <Typography sx={{ fontSize: "h5.fontSize" }}>
+            {this.props.title}
+          </Typography>
+          <Typography>{this.props.timeZone}</Typography>
         </CardContent>
       </Card>
     );
