@@ -1,6 +1,18 @@
-import React from 'react'
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
-  class Clock extends React.Component {
+/* function LocaleTimeLayout() {
+  return (
+    <Container>
+      <Row>
+        <Col>1 of 2</Col>
+        <Col>2 of 2</Col>
+      </Row>
+    </Container>
+  );
+} */
+
+class Clock extends React.Component {
   constructor(props) {
     super(props);
     this.state = { date: new Date() };
@@ -19,9 +31,14 @@ import React from 'react'
   render() {
     return (
       <p>
-        {`${this.props.timeZone}: ${this.state.date.toLocaleString("en-GB", {
-          timeZone: this.props.timeZone,
-        })}`}
+        <Container fluid>
+          <Row className="justify-content-md-center">
+            <Col lg={4} align="left">{`${this.props.timeZone}`}</Col>
+            <Col lg={8} align="right">
+              {this.state.date.toLocaleString("en-GB")}
+            </Col>
+          </Row>
+        </Container>
       </p>
     );
   }

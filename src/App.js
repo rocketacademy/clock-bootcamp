@@ -2,16 +2,12 @@ import React from "react";
 import logo from "./logo.png";
 import "./App.css";
 import Clock from "./Clock";
-import "bootstrap/dist/css/bootstrap.min.css";
-
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { date: new Date() };
   }
-
-    
 
   render() {
     return (
@@ -22,8 +18,6 @@ class App extends React.Component {
           <Clock timeZone="Asia/Seoul" />
           <Clock timeZone="Australia/Melbourne" />
           <Clock timeZone="US/Michigan" />
-
-
         </header>
       </div>
     );
