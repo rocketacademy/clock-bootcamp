@@ -1,0 +1,14 @@
+.react-clock__second-hand {
+  transition: transform cubic-bezier(0, 0.7, 0.3, 1) 0.5s;
+}
+.react-clock {
+  margin: auto;
+}
+.react-clock.dark .react-clock__mark__body,
+.react-clock.dark .react-clock__hour-hand__body,
+.react-clock.dark .react-clock__minute-hand__body {
+  background-color: white;
+}
+.react-clock.dark .react-clock__face {
+  border-color: white;
+}
