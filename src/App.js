@@ -66,6 +66,7 @@ export default function App() {
       }
     });
     setSelectedCities([...cityIds.values()]);
+    // render searchParams only once, on first load
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // run only on first load https://stackoverflow.com/a/55854902
 

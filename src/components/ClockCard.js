@@ -12,7 +12,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import NightlightIcon from "@mui/icons-material/Nightlight";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { AnalogueClock } from "./AnalogueClock";
 import { getDatetimeString, getIsDay } from "../utils/datetime";
 
@@ -30,7 +30,9 @@ const lightTheme = createTheme({
 
 export function ClockCard(props) {
   const [isDay, setIsDay] = useState(true);
-  useEffect(() => {
+
+  // useLayoutEffect to prevent styling flash
+  useLayoutEffect(() => {
     setIsDay(getIsDay(props.date, props.timeZone));
   }, [props.date, props.timeZone]);
 
@@ -49,7 +51,7 @@ export function ClockCard(props) {
   return (
     <ThemeProvider theme={isDay ? lightTheme : darkTheme}>
       <DayNightIcon />
-      <Card sx={{ height: "100%", textAlign: "center" }} elevation={4}>
+      <Card sx={{ height: "100%", textAlign: "center" }} elevation={8}>
         <CardHeader
           sx={{ height: 0 }}
           action={
