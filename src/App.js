@@ -1,6 +1,14 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
+import WorldClock from "./Components/WorldClock";
+
+const clockData = [
+  "America/Los_Angeles",
+  "Europe/London",
+  "Asia/Singapore",
+  "Asia/Qatar",
+];
 
 class App extends React.Component {
   render() {
@@ -8,13 +16,10 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <WorldClock clockData={clockData} />
         </header>
       </div>
     );
   }
 }
-
 export default App;
