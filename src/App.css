@@ -17,3 +17,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.container {
+  margin-top: 2rem;
+  max-width: 900px;
+}
+
+.form-label {
+  font-size: 1.8rem;
+}
