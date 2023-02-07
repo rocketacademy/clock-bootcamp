@@ -1,7 +1,8 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
-import Clock from "./Components/Clock";
+// import Clock from "./Components/Clock";
+import WorldClock from "./Components/WorldClock";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,6 +13,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <br />
           <Container>
             <Row>
               <Col>
@@ -24,9 +26,13 @@ class App extends React.Component {
                 <h1>Local Time</h1>
               </Col>
             </Row>
-            <Clock timeZone="Asia/Singapore" />
-            <Clock timeZone="America/Toronto" />
-            <Clock timeZone="Pacific/Honolulu" />
+            <WorldClock
+              clockData={[
+                "Asia/Singapore",
+                "Pacific/Honolulu",
+                "America/Toronto",
+              ]}
+            />
           </Container>
         </header>
       </div>
