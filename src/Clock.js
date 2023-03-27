@@ -17,7 +17,7 @@ class Clock extends React.Component {
     const { timeZone } = this.props;
     return (
       <div>
-        <h1>{timeZone}</h1>
+        <h1>{timeZone.split("/")[1]}</h1>
         <p>
           {this.state.date.toLocaleString("en-GB", {
             timeZone: timeZone,
