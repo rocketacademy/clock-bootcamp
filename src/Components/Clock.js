@@ -55,10 +55,12 @@ export default class Clock extends React.Component {
 
     return (
       <div className={isAM ? "clock-am" : "clock-pm"}>
-        <div className="amPM">
-          <p className="detail">{zoneName ? zoneName : "NOW"}</p>
-          <p className={isAM ? "active" : "inactive"}>>AM</p>
-          <p className={!isAM ? "active" : "inactive"}>>PM</p>
+        <div className="amPM detail">
+          <p>{zoneName ? zoneName : "NOW"}</p>
+          <p className="inactive">•</p>
+          <p className={isAM ? "active" : "inactive"}>AM</p>
+          <p className="inactive">•</p>
+          <p className={!isAM ? "active" : "inactive"}>PM</p>
         </div>
         <p className="bigText">
           {hours < 10 && "0"}
