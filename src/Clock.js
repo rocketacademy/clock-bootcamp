@@ -14,7 +14,17 @@ class Clock extends React.Component {
     clearInterval(this.timerID);
   }
   render() {
-    return <p>{this.state.date.toString()}</p>;
+    const { timeZone } = this.props;
+    return (
+      <div>
+        <h1>{timeZone}</h1>
+        <p>
+          {this.state.date.toLocaleString("en-GB", {
+            timeZone: timeZone,
+          })}
+        </p>
+      </div>
+    );
   }
 }
 
