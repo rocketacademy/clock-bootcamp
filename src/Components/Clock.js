@@ -54,7 +54,7 @@ export default class Clock extends React.Component {
     let seconds = this.state.time.getUTCSeconds();
 
     return (
-      <div className="clock">
+      <div className={isAM ? "clock-am" : "clock-pm"}>
         <div className="amPM">
           <p className="detail">{zoneName ? zoneName : "NOW"}</p>
           <p className={isAM ? "active" : "inactive"}>>AM</p>
