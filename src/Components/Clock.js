@@ -52,17 +52,23 @@ export default class Clock extends React.Component {
       <div className={isDark ? "clock-pm" : "clock-am"}>
         <div className="detail">
           <p>{timeZone}</p>
-          <p className="inactive">•</p>
-          <p className={isAM ? "active" : "inactive"}>AM</p>
-          <p className="inactive">•</p>
-          <p className={!isAM ? "active" : "inactive"}>PM</p>
         </div>
-        <p className="bigText">
-          {hour < 10 && "0"}
-          {hour}:{minute < 10 && "0"}
-          {minute}:{second < 10 && "0"}
-          {second}
-        </p>
+        <div className="time">
+          <p className="bigText">
+            {hour < 10 && "0"}
+            {hour}:{minute < 10 && "0"}
+            {minute}
+          </p>
+          <div className="timeSide">
+            <div className={isDark ? "amPM clock-am" : "amPM clock-pm"}>
+              <p>{isAM ? "AM" : "PM"}</p>
+            </div>
+            <p>
+              {second < 10 && "0"}
+              {second}
+            </p>
+          </div>
+        </div>
         <div className="detail">
           <p>{currentTime.toLocaleString(DateTime.DATE_HUGE)}</p>
         </div>
