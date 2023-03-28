@@ -4,7 +4,10 @@ import Clock from "./Clock.js";
 class WorldClock extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "grapefruit", listOfFlavors: ["lime", "grapefruit"] };
+    this.state = {
+      value: "Asia/Singapore",
+      timeZones: ["Asia/Singapore"],
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -15,18 +18,19 @@ class WorldClock extends React.Component {
   }
 
   handleSubmit(event) {
-    //console.log(event.target.value);
-    this.state.listOfFlavors.push(this.state.value);
-    let newListOfFlavors = this.state.listOfFlavors;
+    // Why does the code below return undefined?
+    // console.log(event.target.value);
+    this.state.timeZones.push(this.state.value);
+    let newTimeZones = this.state.timeZones;
     this.setState({
-      listOfFlavors: newListOfFlavors,
+      timeZones: newTimeZones,
     });
-    alert("Your favorite flavor is: " + this.state.listOfFlavors.toString());
+    console.log(this.state.timeZones.toString());
     event.preventDefault();
   }
 
   render() {
-    const listOfClocks = this.props.timeZones.map((timeZone) => {
+    const listOfClocks = this.state.timeZones.map((timeZone) => {
       return (
         <div key={timeZone}>
           <Clock timeZone={timeZone} />
@@ -36,16 +40,15 @@ class WorldClock extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Pick your favorite flavor:
-            <select value={this.state.value} onChange={this.handleChange}>
-              <option value="grapefruit">Grapefruit</option>
-              <option value="lime">Lime</option>
-              <option value="coconut">Coconut</option>
-              <option value="mango">Mango</option>
-            </select>
-          </label>
-          <input type="submit" value="Submit" />
+          <div>Pick a Time Zone:</div>
+
+          <select value={this.state.value} onChange={this.handleChange}>
+            <option value="America/Los_Angeles">Los Angeles</option>
+            <option value="Europe/London">London</option>
+            <option value="Asia/Singapore">Singapore</option>
+            <option value="America/Toronto">Toronto</option>
+          </select>
+          <input type="submit" value="Add Time Zone" />
         </form>
         <div>{listOfClocks}</div>
       </div>
