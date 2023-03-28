@@ -1,19 +1,64 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  min-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Montserrat Alternates", sans-serif;
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 40px;
+}
+
+.header-text {
   color: white;
+  font-size: 100px;
+  text-shadow: 1px 1px black;
+}
+
+.App-body {
+  padding-bottom: 20px;
+  color: black;
+}
+
+.city {
+  font-size: 60px;
+  text-shadow: 1px 1px white;
+}
+
+p {
+  font-size: 40px;
+  padding: 5px;
+  margin: 5px;
+}
+
+hr {
+  color: black;
+  margin: 20px 150px;
+  width: 50%;
+  align-self: center;
+}
+
+.body-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-container {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 600px;
+  height: 80px;
+  border-style: inset;
+  border-color: black;
+  box-shadow: 1px 1px black;
 }
