@@ -9,7 +9,10 @@ import { Introduce } from "./Components/Introduce.js";
 import Counter from "./Components/Counter.js";
 import Clock from "./Components/Clock";
 
-// import Button from "react-bootstrap/Button";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class App extends React.Component {
   constructor(props) {
@@ -38,11 +41,30 @@ class App extends React.Component {
           <button onClick={this.toggleClock}> Toggle Clock</button>
 
           {this.state.showClock ? <Clock /> : "No clock"} */}
-          <Clock timeZone="Asia/Singapore" />
-          <Clock timeZone="Europe/London" />
-          <Clock timeZone="Atlantic/Reykjavik" />
-          <Clock timeZone="America/New_York" />
-          <Clock timeZone="Africa/Johannesburg" />
+          <Container>
+            <br></br>
+            <br></br>
+            <Row>
+              <Col>
+                Singapore <Clock timeZone="Asia/Singapore" />
+              </Col>
+              <Col>
+                {" "}
+                London <Clock timeZone="Europe/London" />
+              </Col>
+              <Col>
+                {" "}
+                Reykjavik <Clock timeZone="Atlantic/Reykjavik" />
+              </Col>
+              <Col>
+                {" "}
+                New York <Clock timeZone="America/New_York" />
+              </Col>
+              <Col>
+                Johannesburg <Clock timeZone="Africa/Johannesburg" />
+              </Col>
+            </Row>
+          </Container>
         </header>
       </div>
     );

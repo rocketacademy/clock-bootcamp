@@ -34,7 +34,6 @@ export default class Clock extends React.Component {
     return (
       <div>
         <p>
-          The Current time in {timeZone.split("/")[1]} is:{" "}
           {this.state.time.toLocaleTimeString("en-GB", {
             timeZone: timeZone,
           })}
