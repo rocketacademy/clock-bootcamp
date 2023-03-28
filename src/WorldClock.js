@@ -5,11 +5,9 @@ class WorldClock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "Asia/Singapore",
-      timeZones: ["Asia/Singapore"],
+      value: "America/Los_Angeles",
+      timeZones: ["Asia/Singapore", "Europe/London"],
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -19,7 +17,7 @@ class WorldClock extends React.Component {
 
   handleSubmit(event) {
     // Why does the code below return undefined?
-    // console.log(event.target.value);
+    console.log(event.target.value);
     this.state.timeZones.push(this.state.value);
     let newTimeZones = this.state.timeZones;
     this.setState({
@@ -30,23 +28,35 @@ class WorldClock extends React.Component {
   }
 
   render() {
-    const listOfClocks = this.state.timeZones.map((timeZone) => {
+    const listOfClocks = this.state.timeZones.map((timeZone, index) => {
       return (
-        <div key={timeZone}>
+        // add the timeZone and index so that each key will be unique to avoid key duplication
+        <div key={timeZone + index}>
           <Clock timeZone={timeZone} />
         </div>
       );
     });
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form
+          onSubmit={(event) => {
+            this.handleSubmit(event);
+          }}
+        >
           <div>Pick a Time Zone:</div>
 
-          <select value={this.state.value} onChange={this.handleChange}>
+          <select
+            value={this.state.value}
+            onChange={(event) => {
+              this.handleChange(event);
+            }}
+          >
             <option value="America/Los_Angeles">Los Angeles</option>
             <option value="Europe/London">London</option>
             <option value="Asia/Singapore">Singapore</option>
             <option value="America/Toronto">Toronto</option>
+            <option value="Europe/Berlin">Berlin</option>
+            <option value="Asia/Hong_Kong">Hong Kong</option>
           </select>
           <input type="submit" value="Add Time Zone" />
         </form>
