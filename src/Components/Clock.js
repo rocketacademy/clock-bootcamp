@@ -1,17 +1,18 @@
 import React from "react";
+import { DateTime } from "luxon";
 
 export default class Clock extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      time: new Date(),
+      time: DateTime.now(),
     };
   }
 
   tick() {
     this.setState({
-      time: new Date(),
+      time: DateTime.now(),
     });
   }
 
@@ -20,53 +21,45 @@ export default class Clock extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("Ticked");
+    // console.log("Ticked");
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
 
   render() {
-    let { zoneName, hourDiff, minDiff } = this.props;
+    let { timeZone } = this.props;
     let isAM = true;
-    let hours = this.state.time.getHours();
+    let isDark = true;
+    let currentTime = this.state.time.setZone(timeZone);
+    let hour = currentTime.hour;
+    let minute = currentTime.minute;
+    let second = currentTime.second;
 
-    if (hourDiff) {
-      hours = this.state.time.getUTCHours() + Number(hourDiff);
+    if (hour >= 7 && hour < 19) {
+      isDark = false;
     }
-    if (hours > 12) {
-      hours -= 12;
+
+    if (hour > 12) {
+      hour -= 12;
       isAM = false;
     }
 
-    let minutes = this.state.time.getMinutes();
-
-    if (minDiff) {
-      minutes = this.state.time.getUTCMinutes() + Number(minDiff);
-    }
-    if (minutes > 60) {
-      minutes -= 60;
-      hours += 1;
-    } else if (minutes < 0) {
-      minutes += 60;
-      hours -= 1;
-    }
-
-    let seconds = this.state.time.getUTCSeconds();
-
     return (
-      <div className={isAM ? "clock-am" : "clock-pm"}>
+      <div className={isDark ? "clock-pm" : "clock-am"}>
         <div className="amPM detail">
-          <p>{zoneName ? zoneName : "NOW"}</p>
+          <p>{timeZone}</p>
           <p className="inactive">•</p>
           <p className={isAM ? "active" : "inactive"}>AM</p>
           <p className="inactive">•</p>
           <p className={!isAM ? "active" : "inactive"}>PM</p>
         </div>
         <p className="bigText">
-          {hours < 10 && "0"}
-          {hours}:{minutes < 10 && "0"}
-          {minutes}:{seconds < 10 && "0"}
-          {seconds}
+          {hour < 10 && "0"}
+          {hour}:{minute < 10 && "0"}
+          {minute}:{second < 10 && "0"}
+          {second}
         </p>
       </div>
     );

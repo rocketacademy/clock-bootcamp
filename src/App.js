@@ -15,10 +15,10 @@ class App extends React.Component {
       <div>
         <h1>World Clock</h1>
         <div className="clockWall">
-          <Clock />
-          <Clock zoneName="NYC" hourDiff="-4" />
-          <Clock zoneName="LDN" hourDiff="1" />
-          <Clock zoneName="IND" hourDiff="5" minDiff="30" />
+          <Clock timeZone="Asia/Singapore" />
+          <Clock timeZone="America/New_York" />
+          <Clock timeZone="Europe/London" />
+          <Clock timeZone="Asia/Tehran" />
         </div>
       </div>
     );
