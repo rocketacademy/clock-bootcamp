@@ -44,16 +44,19 @@ export default class Clock extends React.Component {
     if (hour > 12) {
       hour -= 12;
       isAM = false;
+    } else if (hour === 0) {
+      hour = 12;
     }
 
     return (
       <div className={isDark ? "clock-pm" : "clock-am"}>
-        <div className="amPM detail">
+        <div className="detail">
           <p>{timeZone}</p>
           <p className="inactive">•</p>
           <p className={isAM ? "active" : "inactive"}>AM</p>
           <p className="inactive">•</p>
           <p className={!isAM ? "active" : "inactive"}>PM</p>
+          <p className="inactive">{" • "} </p>
         </div>
         <p className="bigText">
           {hour < 10 && "0"}
@@ -61,6 +64,9 @@ export default class Clock extends React.Component {
           {minute}:{second < 10 && "0"}
           {second}
         </p>
+        <div className="detail">
+          <p>{currentTime.toLocaleString(DateTime.DATE_HUGE)}</p>
+        </div>
       </div>
     );
   }

@@ -10,9 +10,24 @@ body {
 }
 
 h1 {
-  padding: 1.5vw 1.5vw 1.5vw;
   font-size: 20px;
   font-weight: 400;
+}
+
+.header {
+  padding: 1.5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+form input {
+  font-size: 14px;
+  padding: 7px;
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+  font-family: inherit;
 }
 
 .clockWall {
@@ -27,7 +42,7 @@ h1 {
   align-items: left;
 }
 
-.amPM {
+.detail {
   display: flex;
   padding-top: 0.8vw;
   font-size: 15px;
@@ -52,13 +67,14 @@ h1 {
 
 .bigText {
   font-family: "Barlow Semi Condensed", sans-serif;
-  font-size: 20vw;
+  font-size: 24vw;
   line-height: 0.8;
   font-weight: 100;
   letter-spacing: -0.5vw;
+  margin-bottom: 10px;
 }
 
-.detail {
+.detail p {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
