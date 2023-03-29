@@ -1,5 +1,7 @@
 import React from "react";
 import Clock from "./Clock.js";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 class WorldClock extends React.Component {
   constructor(props) {
@@ -45,7 +47,7 @@ class WorldClock extends React.Component {
         >
           <div>Pick a Time Zone:</div>
 
-          <select
+          <Form.Select
             value={this.state.value}
             onChange={(event) => {
               this.handleChange(event);
@@ -57,9 +59,10 @@ class WorldClock extends React.Component {
             <option value="America/Toronto">Toronto</option>
             <option value="Europe/Berlin">Berlin</option>
             <option value="Asia/Hong_Kong">Hong Kong</option>
-          </select>
-          <input type="submit" value="Add Time Zone" />
+          </Form.Select>
+          <Button as="input" type="submit" value="Add Time Zone" />
         </form>
+        <br></br>
         <div>{listOfClocks}</div>
       </div>
     );
