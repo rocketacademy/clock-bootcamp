@@ -17,3 +17,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.container-md .row .col {
+  border: 1px solid white;
+}
