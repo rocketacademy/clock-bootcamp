@@ -1,6 +1,15 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
+import WorldClock from "./WorldClock.js";
+
+const timeZoneArray = [
+  "Asia/Singapore",
+  "Asia/Seoul",
+  "Europe/London",
+  "America/New_York",
+  "Asia/Kuala_Lumpur",
+];
 
 class App extends React.Component {
   render() {
@@ -8,9 +17,8 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          {/* Render date value that is stored in state */}
+          <WorldClock clockArray={timeZoneArray} />
         </header>
       </div>
     );
