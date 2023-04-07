@@ -33,8 +33,8 @@ class Clock extends React.Component {
             {/* Render date value that is stored in state */}
             <Row className="justify-content-md-center">
               {/*50% distributed width at all cases*/}
-              <Col xs={5} sm={5} md = {5} lg={5}>{`${this.timeZone}`}</Col>
-              <Col xs={5} sm={5} md = {5} lg={5}>{`${this.state.date.toLocaleString("en-GB", {timeZone: this.timeZone})}`}</Col>
+              <Col md="auto">{`${this.timeZone}`}</Col>
+              <Col md="auto">{`${this.state.date.toLocaleString("en-GB", {timeZone: this.timeZone})}`}</Col>
             </Row>
         </Container>
       );
