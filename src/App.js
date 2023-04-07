@@ -1,20 +1,26 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
+import Clock from "./Clock.js";
+import Container from 'react-bootstrap/Container';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <header className="App-header">
+      <Container className="App">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
+          <Clock timeZone="Europe/London" />
+          <Clock timeZone="America/Los_Angeles" />
+          <Clock timeZone="Asia/Singapore" />         
+      </Container>
+      </header>
+      
     );
   }
 }
+
+
+
 
 export default App;
