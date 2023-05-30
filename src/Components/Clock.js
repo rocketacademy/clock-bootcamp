@@ -6,8 +6,6 @@ export default class Clock extends React.Component {
     //initialise component state to contain "date" attribure with current date & time
     this.state = {
       date: new Date(),
-      //to toggle the clock on/off
-      showClock: true,
     };
   }
 
@@ -18,12 +16,6 @@ export default class Clock extends React.Component {
       date: new Date(),
     });
   }
-
-  toggleClock = () => {
-    this.setState({
-      showClock: !this.state.showClock,
-    });
-  };
 
   componentDidMount() {
     //use "setInterval" to run a function every second
@@ -43,27 +35,12 @@ export default class Clock extends React.Component {
   render() {
     return (
       <div>
-        {/* SCENARIO: WITH TOGGLE CLOCK BUTTON */}
-        <button onClick={this.toggleClock}>Toggle Clock</button>
-        <br />
-        {this.state.showClock ? (
-          <p>
-            <strong>{`${this.props.timeZone}`}</strong>
-            {`: ${this.state.date.toLocaleString("en-GB", {
-              timeZone: this.props.timeZone,
-            })}`}
-          </p>
-        ) : (
-          "No Clock"
-        )}
-
-        {/* SCENARIO: WITHOUT TOGGLE CLOCK BUTTON */}
-        {/* <p>
+        <p>
           <strong>{`${this.props.timeZone}`}</strong>
           {`: ${this.state.date.toLocaleString("en-GB", {
             timeZone: this.props.timeZone,
           })}`}
-        </p> */}
+        </p>
       </div>
     );
   }
