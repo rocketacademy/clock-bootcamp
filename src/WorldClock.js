@@ -12,7 +12,7 @@ class WorldClock extends React.Component {
           <Row>
             <Col>The time in {item} is </Col>
             <Col>
-              <Clock timeZone={item} />
+              <Clock timezone={item} />
             </Col>
           </Row>
         ))}
