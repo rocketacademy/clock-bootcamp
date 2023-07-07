@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./logo.png";
-import "./App.css";
+//import "./App.css";
 
 class App extends React.Component {
   render() {
@@ -9,7 +9,8 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            {new Date().toString()}
+            {/* Edit <code>src/App.js</code> and save to reload. */}
           </p>
         </header>
       </div>
