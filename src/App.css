@@ -17,3 +17,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+#Grid {
+  justify-content: center;
+  background-color: purple;
+}
+
+#Grid .col-content {
+  border: 1px solid black;
+  padding: 6px;
+  width: 280px;
+}
