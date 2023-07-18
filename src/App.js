@@ -1,20 +1,18 @@
 import React from "react";
-import logo from "./logo.png";
-import "./App.css";
+import WorldClock from "./Component/WorldClock";
+import Countdown from "./Component/Countdown";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-        </header>
-      </div>
-    );
-  }
-}
+const Home = () => {
+  const countdownDate = new Date(new Date().getFullYear() + 1, 0, 1).getTime();
 
-export default App;
+  return (
+    <div className="home">
+      <h1>New Year Countdown</h1>
+      <Countdown countdownDate={countdownDate} />
+      <h1>World Clock</h1>
+      <WorldClock />
+    </div>
+  );
+};
+
+export default Home;
