@@ -11,7 +11,11 @@
   },
   "scripts": {
     "predeploy": "npm run build",
+<<<<<<< HEAD
     "deploy": "gh-pages -b master -d build",
+=======
+    "deploy": "gh-pages -b main -d build",
+>>>>>>> parent of d728437 (Updates)
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
