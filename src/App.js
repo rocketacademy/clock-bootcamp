@@ -13,7 +13,7 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
 
-          <div id="Grid">
+          <div id="grid">
             <Container>
               <Row>
                 <Col className="col-content">City</Col>

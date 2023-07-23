@@ -18,12 +18,12 @@
   color: white;
 }
 
-#Grid {
+#grid {
   justify-content: center;
   background-color: purple;
 }
 
-#Grid .col-content {
+#grid .col-content {
   border: 1px solid black;
   padding: 6px;
   width: 280px;
