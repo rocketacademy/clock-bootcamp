@@ -1,5 +1,6 @@
 {
   "name": "world-clock-bootcamp",
+  "homepage": "https://llesterja.github.io/world-clock-bootcamp/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,7 +13,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b main -d build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
@@ -31,7 +32,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-      "homepage": "https://llesterja.github.io/world-clock-bootcamp/"
+    ]
   }
 }
