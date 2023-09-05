@@ -1,3 +1,24 @@
+h3 {
+  width: 20em;
+  border: 3px dotted white;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px 20px;
+}
+
+input {
+  width: 15em;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px 10px;
+}
+
+button {
+  border-radius: 10px;
+  width: 5em;
+}
+
 .App {
   text-align: center;
 }
@@ -8,7 +29,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #f68d8d;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,4 +37,43 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-weight: 600;
+  margin: 0;
+}
+
+.table-row {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-elements {
+  background-color: #f56a6a;
+  border: 2px solid black;
+  width: 200px;
+  height: 50px;
+  padding: 4px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-elements {
+  background-color: #f56a6a;
+  border: 2px solid black;
+  width: 200px; /* Adjust the width to your desired fixed width */
+  height: 50px;
+  padding: 5px; /* Add padding to improve visual appearance */
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
