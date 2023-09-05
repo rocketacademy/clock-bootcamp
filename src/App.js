@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./logo.png";
+import clocklogo from "./clock.gif";
 import "./App.css";
 import Clock from "./components/Clock";
 import Container from "react-bootstrap/Container";
@@ -29,19 +29,20 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault(); // Prevent the default form submission behavior
     this.setState({ toDo: this.state.inputValue }); // Update 'toDo' state
+    this.setState({ inputValue: "" }); // Update 'toDo' state
   }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h3>Current Task: {this.state.toDo}</h3>
+          <img src={clocklogo} className="App-logo" alt="logo" />
+          <h3>☑️ Current Task: {this.state.toDo}</h3>
           <form>
             <input
               type="text"
               placeholder="What are you doing?"
-              value={this.state.toDo}
+              value={this.state.inputValue}
               onChange={this.handleChange}
             ></input>
             <button type="submit" onClick={this.handleSubmit}>
