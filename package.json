@@ -1,7 +1,7 @@
 {
   "name": "world-clock-bootcamp",
   "version": "0.1.0",
-  "homepage": "https://spenceryang.github.io/world-clock-app",
+  "homepage": "https://spenceryang.github.io/world-clock-bootcamp",
   "private": true,
   "dependencies": {
     "gh-pages": "^6.0.0",
