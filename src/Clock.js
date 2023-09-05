@@ -27,7 +27,8 @@ export default class Clock extends React.Component {
     // let { timezoneName } = this.props;
     return (
       <p>
-        {`Local time in ${this.props.timeZone}`}:
+        {this.props.timeZone}
+        {/* {`Local time in ${this.props.timeZone}`}: */}
         <br />
         {this.state.date.toLocaleString("en-GB", {
           timeZone: this.props.timeZone,

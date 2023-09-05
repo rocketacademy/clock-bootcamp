@@ -2,7 +2,8 @@ import React from "react";
 import logo from "./logo.png";
 import "./App.css";
 
-import Clock from "./Clock.js";
+// import Clock from "./Clock.js";
+import WorldClock from "./WorldClock.js";
 
 const locations = ["Asia/Singapore", "Japan", "PST8PDT"];
 
@@ -20,9 +21,10 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            <Clock timeZone={locations[0]} />
+            <WorldClock clockData={locations} />
+            {/* <Clock timeZone={locations[0]} />
             <Clock timeZone={locations[1]} />
-            <Clock timeZone={locations[2]} />
+            <Clock timeZone={locations[2]} /> */}
           </p>
         </header>
       </div>
