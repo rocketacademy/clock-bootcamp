@@ -1,4 +1,5 @@
 {
+  "homepage": "https://shanquanSQ.github.io/world-clock-bootcamp",
   "name": "world-clock-bootcamp",
   "version": "0.1.0",
   "private": true,
@@ -33,6 +34,5 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.3.3"
-  },
-  "homepage": "https://shanquanSQ.github.io/world-clock-bootcamp"
+  }
 }
