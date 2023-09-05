@@ -26,14 +26,18 @@ export default class Clock extends React.Component {
   render() {
     // let { timezoneName } = this.props;
     return (
-      <p>
-        {this.props.timeZone}
-        {/* {`Local time in ${this.props.timeZone}`}: */}
-        <br />
-        {this.state.date.toLocaleString("en-GB", {
-          timeZone: this.props.timeZone,
-        })}
-      </p>
+      <div className="transition ease-in-out duration-300 divide-y divide-solid divide-slate-500 hover:divide-slate-800 hover:scale-110">
+        <p className="transition delay-0 ease-in-out duration-300 text-gray-600 text-left pl-1 hover:scale-105">
+          {this.props.timeZone}
+        </p>
+        <p className="text-slate-100 text-right pr-1">
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          {/* {`Local time in ${this.props.timeZone}`}: */}
+          {this.state.date.toLocaleString("en-GB", {
+            timeZone: this.props.timeZone,
+          })}
+        </p>
+      </div>
 
       //alternative to line 30 is simply:
       // {this.props.timeZone}:
