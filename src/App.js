@@ -1,20 +1,20 @@
 // App.js
 import React, { Component } from "react";
-import logo from "./logo.png";
-import "./App.css";
-import Clock from "./clock.js"; // Import the Clock component
+import WorldClock from "./WorldClock"; // Import the WorldClock component
+
+const clockData = [
+  { timeZone: "America/New_York", country: "USA" },
+  { timeZone: "Europe/London", country: "UK" },
+  { timeZone: "Asia/Singapore", country: "Singapore" }, // Updated time zone
+  // Add more objects with time zones and country names as needed
+];
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Clock label="Singapore Time" timeZone="Asia/Singapore" />
-          <Clock label="London Time" timeZone="Europe/London" />
-          <Clock label="Los Angeles Time" timeZone="America/Los_Angeles" />
-          <Clock label="New Zealand/Auckland Time" timeZone="Pacific/Auckland" />
-        </header>
+      <div>
+        <h1>World Clocks</h1>
+        <WorldClock clockData={clockData} /> {/* Use the WorldClock component */}
       </div>
     );
   }
