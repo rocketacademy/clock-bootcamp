@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  text-transform: uppercase;
 }
 
 .App-logo {
@@ -14,6 +15,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: "alarm clock", sans-serif;
+  src: "./alarm clock.ttf";
+  font-size: 10px + 2vmin;
+  color: limegreen;
 }
