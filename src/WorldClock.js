@@ -12,7 +12,7 @@ class WorldClock extends React.Component {
       display: <></>,
     };
     this.timezonesInput = React.createRef();
-    this.state.display = (
+    this.inputForm = (
       <Form className="w-50" onSubmit={() => this.submit()}>
         <Form.Group className="mb-3">
           <Form.Label>Set-up your clocks</Form.Label>
@@ -27,13 +27,24 @@ class WorldClock extends React.Component {
         </Button>
       </Form>
     );
+    this.state.display = this.inputForm;
   }
 
   submit() {
     const timezonesInput = this.timezonesInput.current.value.trim().split(" ");
     console.log(timezonesInput);
     this.setState({
-      display: <ClockTable timezonesInput={timezonesInput} />,
+      display: (
+        <>
+          <ClockTable timezonesInput={timezonesInput} />
+          <Button
+            variant="light"
+            onClick={() => this.setState({ display: this.inputForm })}
+          >
+            Take me back!
+          </Button>
+        </>
+      ),
     });
   }
 
