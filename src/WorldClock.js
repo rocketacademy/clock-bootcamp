@@ -58,11 +58,11 @@ export default WorldClock;
 class ClockTable extends React.Component {
   //takes a list of timezones from props and uses the map function to generate multiple Row elements
   clockItems = this.props.timezonesInput.map((timezone) => (
-    <Row className="justify-content-md-center">
-      <Col xs lg="2">
+    <Row className="justify-content-center align-items-center mb-3">
+      <Col xs lg="3">
         {timezone}
       </Col>
-      <Col xs lg="2">
+      <Col xs lg="3" className="justify-content-center align-items-center">
         <Clock timeZone={timezone} />
       </Col>
     </Row>
@@ -72,10 +72,10 @@ class ClockTable extends React.Component {
     return (
       <Container>
         <Row className="justify-content-md-center mb-3">
-          <Col xs lg="2">
+          <Col xs lg="3">
             Country
           </Col>
-          <Col xs lg="2">
+          <Col xs lg="3">
             Time
           </Col>
         </Row>
@@ -100,8 +100,8 @@ class Clock extends React.Component {
   };
   render() {
     return (
-      <p>
-        {this.state.date.toLocaleTimeString("en-GB", {
+      <p className="m-0">
+        {this.state.date.toLocaleString("en-GB", {
           timeZone: this.props.timeZone,
         })}
       </p>
