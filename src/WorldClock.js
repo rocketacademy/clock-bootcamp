@@ -3,51 +3,64 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Form from "react-bootstrap/Form";
-import * as ReactDOM from "react-dom";
-// import "./Clock.css";
+import { Form, Button } from "react-bootstrap";
 
 class WorldClock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timezones: "",
+      display: <></>,
     };
-    this.display = (
-      <Form className="w-50">
-        <Form.Group>
-          <Form.Label>
-            Set-up your clocks (press "enter" to confirm inputs){" "}
-          </Form.Label>
+    this.timezonesInput = React.createRef();
+    this.state.display = (
+      <Form className="w-50" onSubmit={() => this.submit()}>
+        <Form.Group className="mb-3">
+          <Form.Label>Set-up your clocks</Form.Label>
           <Form.Control
-            // value={this.state.timezones}
-            ref={this.textInput}
             type="text"
-            onChange={(e) => this.setState({ timezones: e.target.value })}
             placeholder="Asia/Singapore America/Detroit"
+            ref={this.timezonesInput}
           />
         </Form.Group>
+        <Button variant="light" onClick={() => this.submit()}>
+          Show me the time!
+        </Button>
       </Form>
     );
-    this.dashboard = <ClockTable />;
+  }
+
+  submit() {
+    const timezonesInput = this.timezonesInput.current.value.trim().split(" ");
+    console.log(timezonesInput);
+    this.setState({
+      display: <ClockTable timezonesInput={timezonesInput} />,
+    });
   }
 
   render() {
-    return <>{this.display}</>;
+    return <>{this.state.display}</>;
   }
 }
 
 export default WorldClock;
 
 class ClockTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.timezones = props;
-  }
+  //takes a list of timezones from props and uses the map function to generate multiple Row elements
+  clockItems = this.props.timezonesInput.map((timezone) => (
+    <Row className="justify-content-md-center">
+      <Col xs lg="2">
+        {timezone}
+      </Col>
+      <Col xs lg="2">
+        <Clock timeZone={timezone} />
+      </Col>
+    </Row>
+  ));
+
   render() {
     return (
       <Container>
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-md-center mb-3">
           <Col xs lg="2">
             Country
           </Col>
@@ -55,14 +68,7 @@ class ClockTable extends React.Component {
             Time
           </Col>
         </Row>
-        <Row className="justify-content-md-center">
-          <Col xs lg="2">
-            Asia/Singapore
-          </Col>
-          <Col xs lg="2">
-            <Clock timeZone="Asia/Singapore" />
-          </Col>
-        </Row>
+        {this.clockItems}
       </Container>
     );
   }
