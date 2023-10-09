@@ -1,15 +1,20 @@
 import React from "react";
 import Clock from "./Clock";
+import { Container, Row, Col } from "react-bootstrap";
 
 class WorldClock extends React.Component {
   render() {
     const clockData = this.props.clockData;
     return (
-      <div>
-        {clockData.map((val, index) => {
-          return <Clock timeZone={val} />;
-        })}
-      </div>
+      <Container>
+        <Row>
+          {clockData.map((val, index) => (
+            <Col key={index}>
+              <Clock timeZone={val} />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     );
   }
 }
