@@ -1,18 +1,22 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
-import Clock from "./Clock";
+
+import WorldClock from "./WorldClock";
 
 class App extends React.Component {
   render() {
+    const clockData = [
+      "Europe/Athens",
+      "America/Los_Angeles",
+      "Asia/Singapore",
+    ];
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           {/* ParentComponent App passes this.prop.timeZone to the child component Clock and Clock can then render that prop's timeZone value*/}
-          <Clock timeZone="Europe/London" />
-          <Clock timeZone="America/Los_Angeles" />
-          <Clock timeZone="Asia/Singapore" />
+          <WorldClock clockData={clockData} />
         </header>
       </div>
     );
