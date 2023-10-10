@@ -1,7 +1,8 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
-import WorldClock from "./WorldClock";
+import WorldClock from "./Components/WorldClock";
+import { Button } from "react-bootstrap";
 
 class App extends React.Component {
   render() {
@@ -11,6 +12,9 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <p class="create-space"></p>
+          <Button variant="primary">Toggle Timezones</Button>
+
           <WorldClock clockData={[...clockData]} />
         </header>
       </div>
