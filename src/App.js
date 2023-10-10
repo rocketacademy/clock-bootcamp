@@ -5,6 +5,19 @@ import WorldClock from "./Components/WorldClock";
 import { Button } from "react-bootstrap";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isTimezoneDisplay: true,
+    };
+  }
+
+  toggleClock = () => {
+    this.setState({
+      isTimezoneDisplay: !this.state.isTimezoneDisplay,
+    });
+  };
   render() {
     const clockData = ["Europe/Zurich", "Canada/Yukon", "Asia/Singapore"];
 
@@ -13,9 +26,16 @@ class App extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p class="create-space"></p>
-          <Button variant="primary">Toggle Timezones</Button>
+          <Button variant="primary" onClick={this.toggleClock}>
+            Toggle Timezones
+          </Button>
+          <p class="create-space"></p>
 
-          <WorldClock clockData={[...clockData]} />
+          {this.state.isTimezoneDisplay ? (
+            <WorldClock clockData={[...clockData]} />
+          ) : (
+            <p>Time Zones Removed</p>
+          )}
         </header>
       </div>
     );
