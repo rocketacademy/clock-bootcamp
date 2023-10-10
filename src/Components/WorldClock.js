@@ -12,11 +12,11 @@ class WorldClock extends React.Component {
     return (
       <Container>
         {timeZoneOfCountries.map((zone) => (
-          <Row className="col">
-            <Col md={6} className="col">
+          <Row className="deco">
+            <Col md={6} className="deco">
               The current time in {zone} is:
             </Col>
-            <Col md={6} className="col">
+            <Col md={6} className="deco">
               <Clock timeZone={zone} />
             </Col>
           </Row>
