@@ -14,7 +14,7 @@ class WorldClock extends React.Component {
         {timeZoneOfCountries.map((zone) => (
           <Row className="deco">
             <Col md={6} className="deco">
-              The current time in {zone} is:
+              Current time in {zone} :
             </Col>
             <Col md={6} className="deco">
               <Clock timeZone={zone} />
