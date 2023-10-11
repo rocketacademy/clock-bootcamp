@@ -23,11 +23,11 @@ class Clock extends React.Component {
 
   render() {
     // Render just the date value stored in the state variable and remove any _ in the strings
-    const formattedTimeZone = this.props.timeZone.replace(/_/g, " "); // globally replace underscores with spaces
+
     return (
       // We access the ParentComponenet's, App.js, timeZone prop in our ChildComponent here
       <p>
-        {formattedTimeZone}:&nbsp;
+        {/* {formattedTimeZone}:&nbsp; */}
         {this.state.date.toLocaleString("en-GB", {
           timeZone: this.props.timeZone,
         })}

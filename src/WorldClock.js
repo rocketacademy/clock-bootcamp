@@ -7,13 +7,16 @@ class WorldClock extends React.Component {
     const clockData = this.props.clockData;
     return (
       <Container>
-        <Row>
-          {clockData.map((val, index) => (
-            <Col key={index}>
+        {clockData.map((val, index) => (
+          <Row className="border">
+            <Col md={6} className="border">
+              Current time in {val}:
+            </Col>
+            <Col md={6} className="border">
               <Clock timeZone={val} />
             </Col>
-          ))}
-        </Row>
+          </Row>
+        ))}
       </Container>
     );
   }
