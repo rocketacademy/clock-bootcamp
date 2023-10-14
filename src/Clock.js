@@ -9,6 +9,7 @@ export default class Clock extends React.Component {
   }
 
   tick() {
+    console.log("tick");
     this.setState({
       date: new Date(),
     });
@@ -19,7 +20,7 @@ export default class Clock extends React.Component {
   }
 
   componentWillUnmount() {
-    this.timerID = clearInterval();
+    clearInterval(this.timerID);
   }
 
   render() {
