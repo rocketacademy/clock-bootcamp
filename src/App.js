@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.png";
 import "./App.css";
-import Clock from "./clock"
+import WorldClock from "./WorldClock";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -25,9 +25,7 @@ class App extends React.Component {
         <div className="row">
           <div className ="col-6"><p>City</p></div>
           <div className ="col-6"><p>Clock</p></div>
-          <Clock timeZone="Asia/Singapore" />
-          <Clock timeZone="Asia/Jakarta" />
-          <Clock timeZone="Australia/Melbourne" />
+          <WorldClock clockData={["Australia/Melbourne", "Asia/Singapore", "Asia/Tokyo", "Asia/Jakarta"]} />
         </div>
       </div>
     );
